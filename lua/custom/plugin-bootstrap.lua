@@ -205,6 +205,9 @@ require("lazy").setup({
     {
         'mbbill/undotree'
     },
+    {
+        'github/copilot.vim'
+    },
 	-- Lazy Configuration
 	ui = {
 		size = { width = 0.9, height = 0.4 },
