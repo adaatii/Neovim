@@ -208,6 +208,9 @@ require("lazy").setup({
     {
         'github/copilot.vim'
     },
+    {
+        'akinsho/git-conflict.nvim', version = "*", config = true
+    },
 	-- Lazy Configuration
 	ui = {
 		size = { width = 0.9, height = 0.4 },
