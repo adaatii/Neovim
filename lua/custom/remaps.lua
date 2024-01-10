@@ -1,10 +1,10 @@
 -- Remap function
 local function map(mode, lhs, rhs, opts)
-	local options = { noremap = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 -- Remaps
@@ -17,3 +17,5 @@ vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>")
 
 -- Undotree
 vim.keymap.set('n', '<leader>sc', vim.cmd.UndotreeToggle)
+
+vim.keymap.set('n', '<leader>no', vim.cmd.nohl)
