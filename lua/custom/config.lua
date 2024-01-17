@@ -1,7 +1,7 @@
 -- INFO --
 -- Use vim.opt to replace "set" configurations,
 -- Use vim.g to replace "let" configurations.
-        
+
 -- Number sidebar
 vim.opt.relativenumber = true
 vim.opt.number = true
@@ -33,5 +33,6 @@ require("custom.remaps")
 require("custom.plugin-bootstrap")
 
 -- Colorscheme
--- require("custom.dracula")
-
+--require("custom.dracula")
+-- Lua initialization file
+vim.cmd [[colorscheme nightfly]]
