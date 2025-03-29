@@ -34,7 +34,7 @@ lsp_zero.extend_lspconfig({
 
 local servers = {
     "dockerls", "docker_compose_language_service",
-    "tsserver", "html", "cssls", "cssmodules_ls", "jsonls",
+    "ts_ls", "html", "cssls", "cssmodules_ls", "jsonls",
     "gopls",
     "texlab",
     "marksman",

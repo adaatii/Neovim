@@ -310,7 +310,6 @@ local plugins = {
     -- Copilot
     {
         "github/copilot.vim",
-        event = 'VeryLazy',
         config = function() require("custom.extra.copilot") end
     }, 
 }

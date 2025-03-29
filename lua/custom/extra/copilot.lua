@@ -1,4 +1,4 @@
-vim.cmd[[Copilot setup]]
+--vim.cmd[[Copilot setup]]
 vim.cmd[[Copilot disable]]
 
 vim.keymap.set('n', '<leader><s-c>e', '<cmd>Copilot enable<cr>', {desc = "Enable Copilot", silent = true})
