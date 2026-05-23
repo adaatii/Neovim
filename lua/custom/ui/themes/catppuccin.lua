@@ -2,7 +2,8 @@ vim.opt.termguicolors = true
 local transparency = true
 
 require("catppuccin").setup({
-    flavour = "mocha",
+    --flavour = "mocha",
+    flavour = "frappe",
     show_end_of_buffer = true,
     transparent_background = transparency,
     integrations = {

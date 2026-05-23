@@ -3,7 +3,7 @@ if exists("b:current_syntax")
 endif
 
 " 1. Entidades principais do FSH (Profile, Extension, Instance, etc.)
-syn match fshEntity "^\(Profile\|Extension\|Instance\|ValueSet\|CodeSystem\|RuleSet\|Mapping\|Logical\|Invariant\|Alias\):"
+syn match fshEntity "^\(Profile\|Extension\|Instance\|ValueSet\|CodeSystem\|RuleSet\|Mapping\|Logical\|Invariant\|Alias\|InstanceOf\):"
 
 " 2. Atributos base (Parent, Id, Title, Description, etc.)
 syn match fshProperty "^\(Parent\|Id\|Title\|Description\|Severity\|Expression\|XPath\|Source\|Target\):"

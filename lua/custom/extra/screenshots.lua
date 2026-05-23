@@ -1,14 +1,15 @@
-local mocha = require("catppuccin.palettes").get_palette("mocha")
-local flavour = require("catppuccin").flavour
+--local background = require("catppuccin.palettes").get_palette("mocha")
+--local flavour = require("catppuccin").flavour
 local silicon = require("nvim-silicon")
 
 silicon.setup({
     font = "Iosevka Nerd Font Mono=24;Noto Color Emoji=24",
-    theme = "Dracula",
+    theme = "Monokai Extended",
     debug = false,
-    background = mocha.crust,
-    pad_horiz = 40,
-    pad_vert = 40,
+    --background = background.crust,
+    background = "#11151c",
+    pad_horiz = 0,
+    pad_vert = 0,
     no_round_corner = true,
     no_window_controls = true,
     shadow_blur_radius = 0,

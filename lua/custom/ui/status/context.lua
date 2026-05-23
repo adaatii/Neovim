@@ -1,6 +1,7 @@
 -- Context Line
 require("barbecue").setup({
-    theme = "catppuccin",
+    --theme = "catppuccin",
+    theme = "onedark", -- Change this to "catppuccin" if you want to use catppuccin theme
     attach_navic = false,
 })
 

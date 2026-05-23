@@ -14,15 +14,18 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local opts = {}
-
 local plugins = {
     -- CORE & THEME
-    { 
-        "catppuccin/nvim", 
-        name = "catppuccin", 
-        priority = 1000, 
-        config = function() require("custom.ui.themes.catppuccin") end,
+--    { 
+--        "catppuccin/nvim", 
+--        name = "catppuccin", 
+--        priority = 1000, 
+--        config = function() require("custom.ui.themes.catppuccin") end,
+--    },
+    {
+        "navarasu/onedark.nvim",
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function () require("custom.ui.themes.onedark") end,
     },
     {
         "nvim-treesitter/nvim-treesitter",

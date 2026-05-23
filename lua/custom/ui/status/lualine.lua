@@ -6,6 +6,7 @@ local ignore = {
 require("lualine").setup({
     options = {
         globalstatus = true,
+        theme = 'onedark',
 --        theme = "catppuccin",
         disabled_filetypes = ignore,
         ignore_focus = ignore,
