@@ -22,4 +22,10 @@ require("noice").setup({
 
 -- Notifications
 local notifications = require("notify")
+
+-- Adicione o setup aqui para resolver o aviso do fundo!
+notifications.setup({
+    background_colour = "#11151c", -- O azul profundo do OneDark
+})
+
 vim.keymap.set({"n", "v"}, "<leader>cn", function() notifications.dismiss() end, { desc = "Dismiss notifications" })

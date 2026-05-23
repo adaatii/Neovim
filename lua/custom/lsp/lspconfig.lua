@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
         vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
         vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
-        vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
         vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
         vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
         vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
@@ -21,7 +21,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
         -- Integração com o Navic (Barbecue)
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client.server_capabilities.documentSymbolProvider then
-            require("nvim-navic").attach(client, event.buf)
+            -- Ignora o Spring Boot para evitar o conflito duplo com o jdtls
+            if client.name ~= "spring-boot" then
+                -- Usamos 'pcall' (Protected Call) para silenciar silenciosamente 
+                -- qualquer futuro aviso caso dois servidores colidam em outra linguagem
+                pcall(require("nvim-navic").attach, client, event.buf)
+            end
         end
     end
 })
@@ -39,7 +44,6 @@ local debuggers = { "python", "cppdb" }
 
 -- 4. Instalação e Configuração pelo Mason
 require("mason").setup({})
-
 require("mason-tool-installer").setup({
     ensure_installed = tools,
     auto_update = true,
@@ -59,7 +63,11 @@ require("mason-lspconfig").setup({
                 capabilities = capabilities
             })
         end,
-        jdtls = function() end, -- Substitui o antigo lsp_zero.noop
+        jdtls = function()
+            require('lspconfig').jdtls.setup({
+                capabilities = capabilities
+            })
+        end, -- Substitui o antigo lsp_zero.noop
         lua_ls = function()
             require('lspconfig').lua_ls.setup({
                 capabilities = capabilities,
