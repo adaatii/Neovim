@@ -1,51 +1,56 @@
--- Configured languages
-local languages = {
-    -- Vim specific
-    "vim", "vimdoc",
+return {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate", 
+    config = function()
+        local languages = {
+            -- Vim specific
+            "vim", "vimdoc",
 
-    -- Git
-    "diff", "git_config", "git_rebase", "gitattributes", "gitcommit",
-    "gitignore",
+            -- Git
+            "diff", "git_config", "git_rebase", "gitattributes", "gitcommit",
+            "gitignore",
 
-    -- Markup languages and configuration files
-    "comment", "css", "dockerfile", "doxygen", "helm", "html", "htmldjango",
-    "ini", "latex", "markdown", "markdown_inline", "nginx", "nix",
-    "passwd", "rasi", "requirements", "rst", "ssh_config", "sxhkdrc",
-    "terraform", "tmux", "toml", "udev", "yaml", "zathurarc",
+            -- Markup languages and configuration files
+            "comment", "css", "dockerfile", "doxygen", "helm", "html", "htmldjango",
+            "ini", "latex", "markdown", "markdown_inline", "nginx", "nix",
+            "passwd", "rasi", "requirements", "rst", "ssh_config", "sxhkdrc",
+            "terraform", "tmux", "toml", "udev", "yaml", "zathurarc",
 
-    -- Data formats
-    "csv", "http", "json", "json5", "objdump", "strace", "xml",
+            -- Data formats
+            "csv", "http", "json", "json5", "objdump", "strace", "xml",
 
-    -- Query formats
-    "graphql", "query", "soql", "sparql", "sql",
+            -- Query formats
+            "graphql", "query", "soql", "sparql", "sql",
 
-    -- Programming languages and frameworks
-    "arduino", "asm", "awk", "bash", "c", "c_sharp", "clojure", "commonlisp",
-    "cpp", "dart", "elixir", "erlang", "fsh", "fortran", "gdscript", "gdshader",
-    "go", "godot_resource", "haskell", "java", "javascript", "kotlin", "llvm",
-    "lua", "luadoc", "nasm", "ocaml", "pascal", "perl", "php", "phpdoc",
-    "powershell", "prolog", "python", "r", "ruby", "rust", "scala", "svelte",
-    "swift", "tsx", "typescript", "verilog", "vue",
+            -- Programming languages and frameworks
+            "arduino", "asm", "awk", "bash", "c", "c_sharp", "clojure", "commonlisp",
+            "cpp", "dart", "elixir", "erlang", "fsh", "fortran", "gdscript", "gdshader",
+            "go", "godot_resource", "haskell", "java", "javascript", "kotlin", "llvm",
+            "lua", "luadoc", "nasm", "ocaml", "pascal", "perl", "php", "phpdoc",
+            "powershell", "prolog", "python", "r", "ruby", "rust", "scala", "svelte",
+            "swift", "tsx", "typescript", "verilog", "vue",
 
-    -- Shaders
-    "glsl", "hlsl",
+            -- Shaders
+            "glsl", "hlsl",
 
-    -- Build tools
-    "make", "meson", "ninja"
+            -- Build tools
+            "make", "meson", "ninja"
+        }
+
+        -- Auto_install
+        local install = false
+        if vim.fn.exepath("treesitter") ~= nil then
+            install = true
+        end
+
+        -- Treesitter
+        require("nvim-treesitter.configs").setup({
+            indent = false,
+            highlight = { enable = true, additional_vim_regex_highlighting = false, },
+            ensure_installed = languages,
+            sync_install = false,
+            auto_install = install,
+        })
+    end,
+    vim.treesitter.language.register('yaml', 'fsh')
 }
-
--- Auto_install
-local install = false
-if vim.fn.exepath("treesitter") ~= nil then
-    install = true
-end
-
--- Treesitter
-require("nvim-treesitter.configs").setup({
-    yati = { enable = true, default_lazy = true, },
-    indent = false,
-    highlight = { enable = true, additional_vim_regex_highlight = false, },
-    ensure_installed = languages,
-    sync_install = false,
-    auto_install = install,
-})

@@ -12,4 +12,8 @@ require("markview").setup({
             end
         }
     },
+    experimental = {
+        check_rtp_message = false, -- oculta a mensagem
+    }
 })
+

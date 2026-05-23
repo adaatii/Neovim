@@ -1,5 +1,4 @@
 -- Context Line
--- local highlights = require("custom.extras.highlight-utils")
 require("barbecue").setup({
     theme = "catppuccin",
     attach_navic = false,
@@ -22,3 +21,4 @@ require("treesitter-context").setup({
 vim.keymap.set("n", "[c", function()
     require("treesitter-context").go_to_context(vim.v.count1)
 end, { silent = true, desc = "Jump to context" })
+

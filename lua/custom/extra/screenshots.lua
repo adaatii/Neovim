@@ -1,9 +1,10 @@
 local mocha = require("catppuccin.palettes").get_palette("mocha")
 local flavour = require("catppuccin").flavour
+local silicon = require("nvim-silicon")
 
-require("nvim-silicon").setup({
-    font = "Iosevka Term=24;Noto Color Emoji=24",
-    theme = "Catppuccin-" .. flavour,
+silicon.setup({
+    font = "Iosevka Nerd Font Mono=24;Noto Color Emoji=24",
+    theme = "Dracula",
     debug = false,
     background = mocha.crust,
     pad_horiz = 40,
@@ -17,6 +18,6 @@ require("nvim-silicon").setup({
 })
 
 vim.keymap.set(
-    {"n", "v"}, "<leader>sc", function() require("nvim-silicon").shoot() end,
+    {"n", "v"}, "<leader>sc", silicon.shoot,
     { desc = "Take a screenshot of the entire file", silent = true }
 )
