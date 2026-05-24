@@ -27,6 +27,9 @@ syn region fshBlockComment start="/\*" end="\*/"
 syn match fshNumber "\<\d\+\>"
 syn keyword fshBoolean true false
 
+" 8. Links e URLs
+syn match fshLink "https\?:\/\/[a-zA-Z0-9.\/\-_?=&#%:]*"
+
 " ==========================================
 " LIGAR AS REGRAS AOS GRUPOS DE CORES DO TEMA
 " ==========================================
@@ -39,5 +42,6 @@ hi def link fshComment       Comment
 hi def link fshBlockComment  Comment
 hi def link fshNumber        Number
 hi def link fshBoolean       Boolean
+hi fshLink guifg=Yellow ctermfg=Yellow gui=underline cterm=underline
 
 let b:current_syntax = "fsh"

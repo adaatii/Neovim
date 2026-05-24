@@ -9,7 +9,7 @@ local add_dir_if_exists = function(file)
 end
 
 -- Directories
-add_dir_if_exists("~/Projects")
+add_dir_if_exists("/mnt/data/Lucas/Projects")
 
 -- Setup
 telescope.setup({

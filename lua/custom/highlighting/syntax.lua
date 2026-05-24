@@ -17,7 +17,7 @@ return {
             "terraform", "tmux", "toml", "udev", "yaml", "zathurarc",
 
             -- Data formats
-            "csv", "http", "json", "json5", "objdump", "strace", "xml",
+            "csv", "http", "json", "json5", "objdump", "strace", "xml", "html", "yaml",
 
             -- Query formats
             "graphql", "query", "soql", "sparql", "sql",
@@ -46,11 +46,9 @@ return {
         -- Treesitter
         require("nvim-treesitter.configs").setup({
             indent = false,
-            highlight = { enable = true, additional_vim_regex_highlighting = false, },
+            highlight = { enable = true, additional_vim_regex_highlighting = false },
             ensure_installed = languages,
             sync_install = false,
-            auto_install = install,
         })
     end,
-    vim.treesitter.language.register('yaml', 'fsh')
 }

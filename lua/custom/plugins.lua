@@ -151,12 +151,6 @@ local plugins = {
             event = "VeryLazy",
             config = function() require("custom.ui.terminal") end,
         },
-        {
-            "OXY2DEV/markview.nvim",
-            ft = "markdown", -- Otimização: só carrega se o arquivo for markdown
-            dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-            config = function() require("custom.lsp.languages.markdown") end,
-        },
         -- GIT
         {
             "lewis6991/gitsigns.nvim",
@@ -175,7 +169,6 @@ local plugins = {
         -- EXTRAS & INTEGRATIONS
         {
             "github/copilot.vim",
-            config = function() require("custom.extra.copilot") end
         },
         {
             "vyfor/cord.nvim",
@@ -238,16 +231,6 @@ local plugins = {
                 require("custom.lsp.lspconfig") 
             end,
         },
-        -- Markdown
-        {
-            "OXY2DEV/markview.nvim",
-            lazy = false,
-            dependencies = {
-                "nvim-treesitter/nvim-treesitter",
-                "nvim-tree/nvim-web-devicons"
-            },
-            config = function() require("custom.lsp.languages.markdown") end,
-        },
         --   Debugger
         {
             "rcarriga/nvim-dap-ui",
@@ -266,6 +249,32 @@ local plugins = {
             "3rd/image.nvim",
             event = "VeryLazy",
             config = function() require("custom.ui.image") end,
+        },
+        -- PlantUML
+        {
+            "aklt/plantuml-syntax",
+            lazy = false,
+        },
+        {
+            "weirongxu/plantuml-previewer.vim",
+            dependencies = {
+                "tyru/open-browser.vim", -- Necessário para abrir a imagem no navegador
+            },
+            ft = { "plantuml" },
+            cmd = { "PlantumlOpen" },
+            keys = {
+                { "<leader>p", "<cmd>PlantumlOpen<cr>", desc = "Preview PlantUML" },
+            }
+        },
+        {
+            "iamcco/markdown-preview.nvim",
+            cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+            ft = { "markdown" },
+            build = function() 
+                -- Força o Lazy a colocar os arquivos na memória ANTES de tentar instalar
+                require("lazy").load({ plugins = { "markdown-preview.nvim" } })
+                vim.fn["mkdp#util#install"]() 
+            end,
         },
     }
 
